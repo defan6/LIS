@@ -1,0 +1,4 @@
+rootProject.name = 'LIS'
+
+include 'auth-service'
+include 'shared-libs'

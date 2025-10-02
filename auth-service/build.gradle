@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+version = '0.0.1-SNAPSHOT'
+description = 'Auth Service'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    // Shared libraries
+    implementation project(':shared-libs')
+    
+    // JWT dependencies
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    
+    // Spring Boot starters
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // Thymeleaf Security integration
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    
+    // Database migration
+    implementation 'org.liquibase:liquibase-core'
+    
+    // Message broker
+    implementation 'org.springframework.kafka:spring-kafka'
+    
+    // Code generation and database
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    
+    // Test dependencies (Spring Boot specific)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
